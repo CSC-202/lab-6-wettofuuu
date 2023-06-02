@@ -315,12 +315,40 @@ for experiment in RESULTS:
 # YOUR CODE GOES BELOW
 ## LIST
 
+plt.subplot(1,3,1)
+plt.bar('i', RESULTS['back  (r)'])
+plt.bar('t', RESULTS['front (r)'])
+plt.bar('i', RESULTS['back  (i)'])
+plt.bar('t', RESULTS['front (i)'])
+plt.legend(['back (r)', 'front (r)', 'back (i)', 'front (i)'])
+plt.xticks([])
+plt.yticks([])
+plt.xlabel('List')
+
 
 ## STACK
 
+plt.subplot(1,3,2)
+plt.bar('i', RESULTS['push  (r)'])
+plt.bar('u', RESULTS['pop   (r)'])
+plt.bar('i', RESULTS['push  (i)'])
+plt.bar('u', RESULTS['pop   (i)'])
+plt.legend(['push (r)', 'pop (r)', 'push (i)', 'pop (i)'])
+plt.xticks([])
+plt.yticks([])
+plt.xlabel('Stack')
 
 ## QUEUE
 
+plt.subplot(1,3,3)
+plt.bar('i', RESULTS['deq   (r)'])
+plt.bar('u', RESULTS['enq   (r)'])
+plt.bar('i', RESULTS['deq   (i)'])
+plt.bar('u', RESULTS['enq   (i)'])
+plt.legend(['deq (r)', 'enq (i)', 'deq (i)', 'enq (r)'])
+plt.xticks([])
+plt.yticks([])
+plt.xlabel('Queue')
 
 ## SAVE FIGURE
 plt.savefig('./figs/stapleton_lab6_analysis.png')

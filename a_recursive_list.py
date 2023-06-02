@@ -112,9 +112,9 @@ def addToBack(data: List, value: int) -> List:
     def helper(v:Node):
         if v.next == None:
             last_node = Node(value, None)
-            node = v.next
-            node.next = last_node
+            v.next = last_node
         else:
+            v = v.next
             helper(v)
     if data.first is None:
         data.first = Node(value,None)
@@ -139,18 +139,6 @@ def getElementAtIndex(data: List, index: int) -> Node:
     else:
         return helper(data.first,index,i =0)
 
-
-l = initialize()
-addToFront(l, 2)
-addToFront(l, 5)
-addToBack(l, 5)
-
-
-print(l.last.value)
-
-l = l.toPythonList()
-print(l)
-
-
 def clear(data: List) -> List:
-    raise NotImplementedError("List.clear() not defined")
+    data.first = None
+    return list

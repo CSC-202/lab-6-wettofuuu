@@ -33,24 +33,41 @@ class Queue:
 
 
 def initialize() -> Queue:
-    raise NotImplementedError("Queue.initialize() not defined")
+    return Queue()
 
 
 def isEmpty(data: Queue) -> bool:
-    raise NotImplementedError("Queue.isEmpty() not defined")
-
+    return data.first == None
 
 def enqueue(data: Queue, value: int) -> Queue:
-    raise NotImplementedError("Queue.enqueue() not defined")
+    if data.first is None:
+        data.first = Node(value, None)
+        return data
+    else:
+        new_node = Node(value, data.first)
+        data.first = new_node
+        return data
 
 
 def dequeue(data: Queue) -> tuple[Node, Queue]:
-    raise NotImplementedError("Queue.dequeue() not defined")
-
+    def helper(v:Node, i:int):
+        if i == 0:
+            node = v.next
+            data.first = node
+        elif v is None:
+            raise IndexError ("Oops")
+        else:
+            helper(v.next, i)
+    if isEmpty(data):
+        raise IndexError ("Cannot Remove")
+    else:
+        helper(data.first, i=0)
+        return data.first, data
 
 def peek(data: Queue) -> Node:
-    raise NotImplementedError("Queue.peek() not defined")
+    return data.first.value
 
 
 def clear(data: Queue) -> Queue:
-    raise NotImplementedError("Queue.clear() not defined")
+    data.first = None
+    return data
